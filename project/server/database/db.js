@@ -1,8 +1,6 @@
 import mongoose from 'mongoose';
 
-const Connection = async (username, password) => {
-	const URL =
-		'mongodb://user:codeforinterview@projectweb-shard-00-00.tt682.mongodb.net:27017,projectweb-shard-00-01.tt682.mongodb.net:27017,projectweb-shard-00-02.tt682.mongodb.net:27017/PROJECT0?ssl=true&replicaSet=atlas-9ydc0s-shard-0&authSource=admin&retryWrites=true&w=majority';
+const Connection = async (URL) => {
 	try {
 		await mongoose.connect(URL, {
 			useUnifiedTopology: true,
