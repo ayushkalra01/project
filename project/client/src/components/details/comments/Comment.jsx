@@ -2,8 +2,11 @@ import { Typography, Box, makeStyles } from '@material-ui/core';
 import { Delete } from '@material-ui/icons';
 
 import { deleteComment } from '../../../service/api';
+<<<<<<< HEAD
 import { LoginContext } from '../../../context/ContextProvider';
 import { useContext } from 'react';
+=======
+>>>>>>> 3fbefd9... initial commit
 const useStyles = makeStyles({
 	component: {
 		marginTop: 30,
@@ -30,7 +33,10 @@ const useStyles = makeStyles({
 
 const Comment = ({ comment, setToggle }) => {
 	const classes = useStyles();
+<<<<<<< HEAD
 	const { account, setAccount } = useContext(LoginContext);
+=======
+>>>>>>> 3fbefd9... initial commit
 	const removeComment = async () => {
 		await deleteComment(comment._id);
 		setToggle((prev) => !prev);
@@ -43,9 +49,14 @@ const Comment = ({ comment, setToggle }) => {
 				<Typography className={classes.date}>
 					{new Date(comment.date).toDateString()}
 				</Typography>
+<<<<<<< HEAD
 				{comment.name == account && (
 					<Delete className={classes.delete} onClick={() => removeComment()} />
 				)}
+=======
+
+				<Delete className={classes.delete} onClick={() => removeComment()} />
+>>>>>>> 3fbefd9... initial commit
 			</Box>
 			<Typography>{comment.comments}</Typography>
 		</Box>

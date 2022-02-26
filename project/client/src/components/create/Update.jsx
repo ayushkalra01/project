@@ -46,8 +46,13 @@ const initialPost = {
 	title: '',
 	description: '',
 	picture: '',
+<<<<<<< HEAD
 	username: 'codeforinterview',
 	categories: 'Tech',
+=======
+	username: 'ayush',
+	categories: '',
+>>>>>>> 3fbefd9... initial commit
 	createdDate: new Date(),
 };
 

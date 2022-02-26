@@ -4,8 +4,11 @@ import { Delete, Edit } from '@material-ui/icons';
 import { Link, useHistory } from 'react-router-dom';
 import { getPost, deletePost, updatePost } from '../../service/api';
 
+<<<<<<< HEAD
 import { LoginContext } from '../../context/ContextProvider';
 
+=======
+>>>>>>> 3fbefd9... initial commit
 //components
 import Comments from './comments/Comments';
 
@@ -54,7 +57,10 @@ const DetailView = ({ match }) => {
 	const history = useHistory();
 
 	const [post, setPost] = useState({});
+<<<<<<< HEAD
 	const { account, setAccount } = useContext(LoginContext);
+=======
+>>>>>>> 3fbefd9... initial commit
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -62,7 +68,10 @@ const DetailView = ({ match }) => {
 			setPost(data);
 		};
 		fetchData();
+<<<<<<< HEAD
 		console.log(account, post.username);
+=======
+>>>>>>> 3fbefd9... initial commit
 	}, []);
 
 	const deleteBlog = async () => {
@@ -74,6 +83,7 @@ const DetailView = ({ match }) => {
 		<Box className={classes.container}>
 			{/* <img src={post.picture || url} alt="post" className={classes.image} /> */}
 			<Box className={classes.icons}>
+<<<<<<< HEAD
 				{account === post.username && (
 					<>
 						<Link to={`/update/${post._id}`}>
@@ -88,6 +98,18 @@ const DetailView = ({ match }) => {
 						</Link>
 					</>
 				)}
+=======
+				<Link to={`/update/${post._id}`}>
+					<Edit className={classes.icon} color="primary" />
+				</Link>
+				<Link>
+					<Delete
+						onClick={() => deleteBlog()}
+						className={classes.icon}
+						color="error"
+					/>
+				</Link>
+>>>>>>> 3fbefd9... initial commit
 			</Box>
 			<Typography className={classes.heading}>{post.title}</Typography>
 

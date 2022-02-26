@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState, useEffect, useContext } from 'react';
+=======
+import React, { useState, useEffect } from 'react';
+>>>>>>> 3fbefd9... initial commit
 import {
 	Box,
 	makeStyles,
@@ -7,11 +11,18 @@ import {
 	FormControl,
 	InputBase,
 } from '@material-ui/core';
+<<<<<<< HEAD
 import { AddCircle as Add, CallEnd } from '@material-ui/icons';
 import { useHistory, useLocation } from 'react-router-dom';
 
 import { createPost, uploadFile } from '../../service/api';
 import { LoginContext } from '../../context/ContextProvider';
+=======
+
+import { useHistory, useLocation } from 'react-router-dom';
+
+import { createPost, uploadFile } from '../../service/api';
+>>>>>>> 3fbefd9... initial commit
 
 const useStyle = makeStyles((theme) => ({
 	container: {
@@ -47,7 +58,11 @@ const initialPost = {
 	title: '',
 	description: '',
 	picture: '',
+<<<<<<< HEAD
 	username: '',
+=======
+	username: 'ayush',
+>>>>>>> 3fbefd9... initial commit
 	categories: '',
 	createdDate: new Date(),
 };
@@ -60,7 +75,10 @@ const CreatePost = () => {
 	const [post, setPost] = useState(initialPost);
 	const [file, setFile] = useState('');
 	const [imageURL, setImageURL] = useState('');
+<<<<<<< HEAD
 	const { account, setAccount } = useContext(LoginContext);
+=======
+>>>>>>> 3fbefd9... initial commit
 
 	// const url = post.picture
 	// 	? post.picture
@@ -80,7 +98,10 @@ const CreatePost = () => {
 		};
 		getImage();
 		post.categories = location.search?.split('=')[1] || 'All';
+<<<<<<< HEAD
 		post.username = account;
+=======
+>>>>>>> 3fbefd9... initial commit
 	}, [file]);
 
 	const savePost = async () => {
