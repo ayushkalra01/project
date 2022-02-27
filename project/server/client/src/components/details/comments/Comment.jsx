@@ -1,5 +1,6 @@
 import { Typography, Box, makeStyles } from '@material-ui/core';
 import { Delete } from '@material-ui/icons';
+import { useUserAuth } from '../../../context/UserAuthContext';
 
 import { deleteComment } from '../../../service/api';
 
@@ -29,6 +30,8 @@ const useStyles = makeStyles({
 
 const Comment = ({ comment, setToggle }) => {
 	const classes = useStyles();
+	const { user } = useUserAuth();
+	let currAccount = user.email.split('@')[0];
 	const removeComment = async () => {
 		await deleteComment(comment._id);
 		setToggle((prev) => !prev);
@@ -42,7 +45,9 @@ const Comment = ({ comment, setToggle }) => {
 					{new Date(comment.date).toDateString()}
 				</Typography>
 
-				<Delete className={classes.delete} onClick={() => removeComment()} />
+				{comment.name == currAccount && (
+					<Delete className={classes.delete} onClick={() => removeComment()} />
+				)}
 			</Box>
 			<Typography>{comment.comments}</Typography>
 		</Box>

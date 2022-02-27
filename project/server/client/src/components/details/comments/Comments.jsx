@@ -10,6 +10,7 @@ import {
 import { newComment, getComments } from '../../../service/api';
 //components
 import Comment from './Comment';
+import { useUserAuth } from '../../../context/UserAuthContext';
 
 const useStyles = makeStyles({
 	container: {
@@ -49,7 +50,8 @@ const Comments = ({ post }) => {
 	const [comments, setComments] = useState([]);
 	const [data, setData] = useState();
 	const [toggle, setToggle] = useState(true);
-
+	const { user } = useUserAuth();
+	let currAccount = user.email.split('@')[0];
 	useEffect(() => {
 		const getData = async () => {
 			const response = await getComments(post._id);
@@ -61,7 +63,7 @@ const Comments = ({ post }) => {
 	const handleChange = (e) => {
 		setComment({
 			...comment,
-			name: post.username,
+			name: currAccount,
 			postId: post._id,
 			comments: e.target.value,
 		});

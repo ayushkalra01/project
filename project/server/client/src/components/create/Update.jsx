@@ -11,6 +11,7 @@ import {
 import { useHistory } from 'react-router-dom';
 
 import { updatePost, uploadFile, getPost } from '../../service/api';
+import { useUserAuth } from '../../context/UserAuthContext';
 
 const useStyle = makeStyles((theme) => ({
 	container: {
@@ -46,8 +47,8 @@ const initialPost = {
 	title: '',
 	description: '',
 	picture: '',
-	username: 'codeforinterview',
-	categories: 'Tech',
+	username: '',
+	categories: '',
 	createdDate: new Date(),
 };
 
@@ -58,7 +59,7 @@ const Update = ({ match }) => {
 	const [post, setPost] = useState(initialPost);
 	const [file, setFile] = useState('');
 	const [imageURL, setImageURL] = useState('');
-
+	const { user } = useUserAuth();
 	// const url =
 	// 	'https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80';
 

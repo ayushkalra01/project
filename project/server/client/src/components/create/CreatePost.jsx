@@ -11,6 +11,7 @@ import {
 import { useHistory, useLocation } from 'react-router-dom';
 
 import { createPost, uploadFile } from '../../service/api';
+import { useUserAuth } from '../../context/UserAuthContext';
 
 const useStyle = makeStyles((theme) => ({
 	container: {
@@ -55,7 +56,7 @@ const CreatePost = () => {
 	const classes = useStyle();
 	const history = useHistory();
 	const location = useLocation();
-
+	const { user } = useUserAuth();
 	const [post, setPost] = useState(initialPost);
 	const [file, setFile] = useState('');
 	const [imageURL, setImageURL] = useState('');
@@ -78,6 +79,7 @@ const CreatePost = () => {
 		};
 		getImage();
 		post.categories = location.search?.split('=')[1] || 'All';
+		post.username = user.email.split('@')[0];
 	}, [file]);
 
 	const savePost = async () => {

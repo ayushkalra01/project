@@ -6,6 +6,7 @@ import { getPost, deletePost, updatePost } from '../../service/api';
 
 //components
 import Comments from './comments/Comments';
+import { useUserAuth } from '../../context/UserAuthContext';
 
 const useStyle = makeStyles((theme) => ({
 	container: {
@@ -52,7 +53,8 @@ const DetailView = ({ match }) => {
 	const history = useHistory();
 
 	const [post, setPost] = useState({});
-
+	const { user } = useUserAuth();
+	let currAccount = user.email.split('@')[0];
 	useEffect(() => {
 		const fetchData = async () => {
 			let data = await getPost(match.params.id);
@@ -69,18 +71,20 @@ const DetailView = ({ match }) => {
 	return (
 		<Box className={classes.container}>
 			{/* <img src={post.picture || url} alt="post" className={classes.image} /> */}
-			<Box className={classes.icons}>
-				<Link to={`/update/${post._id}`}>
-					<Edit className={classes.icon} color="primary" />
-				</Link>
-				<Link>
-					<Delete
-						onClick={() => deleteBlog()}
-						className={classes.icon}
-						color="error"
-					/>
-				</Link>
-			</Box>
+			{currAccount == post.username && (
+				<Box className={classes.icons}>
+					<Link to={`/update/${post._id}`}>
+						<Edit className={classes.icon} color="primary" />
+					</Link>
+					<Link>
+						<Delete
+							onClick={() => deleteBlog()}
+							className={classes.icon}
+							color="error"
+						/>
+					</Link>
+				</Box>
+			)}
 			<Typography className={classes.heading}>{post.title}</Typography>
 
 			<Box className={classes.author}>
